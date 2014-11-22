@@ -7,8 +7,11 @@ module.exports = function(ziggy, settings) {
     if(message.slice(0, 4) === '!wf ') {
 
       wolfram.query(message.slice(4), function (err, result) {
+
+        var output = err
+
         if(result[1]) {
-          var output = err 
+          output = err
             ||result[1].subpods[0].value 
             || result[1].subpods[0].image
             || JSON.stringify(result[1].subpods[0])
