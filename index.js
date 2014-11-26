@@ -10,12 +10,12 @@ module.exports = function(ziggy, settings) {
 
         var output = err
 
-        if(result[1]) {
-          output = err
-            ||result[1].subpods[0].value 
-            || result[1].subpods[0].image
-            || JSON.stringify(result[1].subpods[0])
-            || 'Try again.'
+        if(result && result[1]) {
+            output =  err
+              ||result[1].subpods[0].value 
+              || result[1].subpods[0].image
+              || JSON.stringify(result[1].subpods[0])
+              || 'Try again.'
         }
 
         ziggy.say(channel, output.split('\n').slice(0, 5).map(function(ln){ return user.nick + ': ' + ln }).join('\n') )
